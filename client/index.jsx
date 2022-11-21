@@ -6,6 +6,7 @@ import { FrontPage } from "./frontPage";
 import { Login, RegisterNewAccount } from "./userStatus";
 
 function Application() {
+
   return (
     <BrowserRouter>
       <Routes>

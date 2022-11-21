@@ -1,6 +1,7 @@
 import { Link, Route, Routes } from "react-router-dom";
 import { ListPizzas } from "./listPizzas";
 import { AddNewPizza } from "./addNewPizza";
+import {fetchJSON} from "./fetchJson";
 
 export function ShowMenu() {
   return (
@@ -23,9 +24,15 @@ function Cart() {
 }
 
 export function CateringApplication() {
+    const pizzaApi = {
+        async listPizzas() {
+            return await fetchJSON("/api/menu")
+        }
+    }
+
   return (
     <Routes>
-      <Route path={"/"} element={<ListPizzas />} />
+      <Route path={"/"} element={<ListPizzas pizzaApi={pizzaApi} />} />
       <Route path={"/new"} element={<AddNewPizza />} />
       <Route path={"/order"} element={<Cart />} />
       <Route path={"*"} element={<h1>Catering side not found!</h1>} />

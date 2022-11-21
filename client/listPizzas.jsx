@@ -43,9 +43,10 @@ export function AllergensCard({ allergens }) {
   );
 }
 
-export function ListPizzas() {
+export function ListPizzas({ pizzaApi }) {
   const { loading, error, data } = useLoader(async () => {
-    return fetchJSON("/api/menu");
+      return await pizzaApi.listPizzas();
+    // return fetchJSON("/api/menu");
   });
   const [order, setOrder] = useState(0);
 

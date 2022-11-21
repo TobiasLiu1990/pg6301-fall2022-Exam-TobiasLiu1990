@@ -1,7 +1,19 @@
 import { fetchJSON } from "./fetchJson";
 import React, { useState } from "react";
 
-export function AddNewPizza() {
+function FormInput({ label, value, onChangeValue }) {
+  return (
+    <>
+      <label>
+        <strong>{label}</strong>{" "}
+        <input value={value} onChange={(e) => onChangeValue(e.target.value)} />
+      </label>
+      <br></br>
+    </>
+  );
+}
+
+export function AddNewPizza({ pizzaApi }) {
   const [pizza, setPizza] = useState("");
   const [price, setPrice] = useState("");
   const [ingredient, setIngredient] = useState("");
@@ -16,6 +28,8 @@ export function AddNewPizza() {
   async function handleSubmit(e) {
     e.preventDefault();
 
+    pizzaApi.addPizza({ pizza, price, ingredients, allergens })
+
     await fetchJSON("/api/menu/new", {
       method: "post",
       json: { pizza, price, ingredients, allergens },
@@ -27,31 +41,19 @@ export function AddNewPizza() {
       <h1>Add your new pizza</h1>
 
       <form onSubmit={handleSubmit}>
-        <div>
-          Pizza name:
-          <input value={pizza} onChange={(e) => setPizza(e.target.value)} />
-        </div>
+        <FormInput label={"Pizza: "} value={pizza} onChangeValue={setPizza} />
+        <FormInput label={"Price: "} value={price} onChangeValue={setPrice} />
+        <FormInput
+          label={"Ingredients (Separate by space): "}
+          value={ingredient}
+          onChangeValue={setIngredient}
+        />
+        <FormInput
+          label={"Allergen (Separate with space): "}
+          value={allergen}
+          onChangeValue={setAllergen}
+        />
 
-        <div>
-          Price:
-          <input value={price} onChange={(e) => setPrice(e.target.value)} />
-        </div>
-
-        <div>
-          Ingredient (Separate with space):
-          <input
-            value={ingredient}
-            onChange={(e) => setIngredient(e.target.value)}
-          />
-        </div>
-
-        <div>
-          Allergen (Separate with space):
-          <input
-            value={allergen}
-            onChange={(e) => setAllergen(e.target.value)}
-          />
-        </div>
         <button>Submit Pizza</button>
       </form>
     </div>

@@ -2,7 +2,7 @@
 //Fetches / loads a page
 import { useEffect, useState } from "react";
 
-export function useLoader(loadingFn) {
+export function useLoader(loadingFunction) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
   const [data, setData] = useState();
@@ -14,7 +14,7 @@ export function useLoader(loadingFn) {
   async function reloadPage() {
     //Use try-finally here to handle in case url is written wrongly - it will show Loading... forever.
     try {
-      setData(await loadingFn());
+      setData(await loadingFunction());
     } catch (error) {
       setError(error);
     } finally {

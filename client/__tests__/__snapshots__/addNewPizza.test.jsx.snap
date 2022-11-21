@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`add pizza component should show pizza form 1`] = `"<div><h1>Add your new pizza</h1><form><label><strong>Pizza: </strong> <input value=""></label><br><label><strong>Price: </strong> <input value=""></label><br><label><strong>Ingredients (Separate by space): </strong> <input value=""></label><br><label><strong>Allergen (Separate with space): </strong> <input value=""></label><br><button>Submit Pizza</button></form></div>"`;
