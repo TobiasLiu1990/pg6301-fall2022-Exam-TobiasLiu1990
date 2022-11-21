@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import React, { useState } from "react";
 import { fetchJSON } from "./fetchJson";
 import { useLoader } from "./useLoader";
@@ -7,12 +7,29 @@ import { useLoader } from "./useLoader";
 //Create dishes if admin staff
 //Order dish
 
+export function ShowMenu() {
+  return (
+    <div>
+      <h1>Our special pizzas of oddities</h1>
+      <ul>
+        <li>
+          <Link to={"/menu"}>Go to our Menu</Link>
+        </li>
+        <li>
+          <Link to={"/menu/new"}>Add a new pizza dish</Link>
+        </li>
+      </ul>
+    </div>
+  );
+}
+
 function PizzaCard({
   pizza: { pizza, price, ingredients, allergens },
   handleClick,
 }) {
   return (
     <div>
+      <button onClick={handleClick}>Order</button>
       <h4 style={{ margin: "0", border: "0" }}>Pizza: {pizza}</h4>
       <h4 style={{ margin: "0", border: "0" }}>Price: {price}</h4>
       <h4>
@@ -23,7 +40,6 @@ function PizzaCard({
           Allergens: <AllergensCard allergens={allergens} />
         </div>
       </h4>
-      <button onClick={handleClick}>Submit</button>
     </div>
   );
 }
@@ -48,11 +64,11 @@ function AllergensCard({ allergens }) {
   );
 }
 
-export function ListPizzas({ pizzaApi }) {
-  const [order, setOrder] = useState(0);
+export function ListPizzas() {
   const { loading, error, data } = useLoader(async () => {
     return fetchJSON("/api/menu");
   });
+  const [order, setOrder] = useState(0);
 
   if (loading) {
     return <div>Loading menu...</div>;
@@ -169,9 +185,9 @@ export function CateringApplication() {
   return (
     <Routes>
       <Route path={"/"} element={<ListPizzas />} />
-      <Route path={"/order"} element={<Cart />} />
-      <Route path={"/new"} element={<AddNewPizza />} />
-      <Route path={"*"} element={<h1>Catering side not found!</h1>} />
+        <Route path={"/new"} element={<AddNewPizza />} />
+        <Route path={"/order"} element={<Cart />} />
+        <Route path={"*"} element={<h1>Catering side not found!</h1>} />
     </Routes>
   );
 }
