@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { act } from "react-dom/test-utils";
-import { ListPizzas } from "../cateringApplication";
+import {ListPizzas} from "../listPizzas";
 
 const pizzas = [
   {
@@ -18,6 +18,7 @@ const pizzas = [
   },
 ];
 
+//Test useLoader
 describe("ListPizzas component", () => {
   it("should show loading screen", () => {
     const element = document.createElement("div");
@@ -27,7 +28,7 @@ describe("ListPizzas component", () => {
   });
 
   it("should show pizzas", async () => {
-    // const pizzas = [ {pizza: "pizza 1"}, {pizza: "pizza 2"} ]
+    const pizzas = [{ pizza: "pizza 1"}, {pizza: "pizza 2" }];
     const element = document.createElement("div");
 
     await act(async () => {
@@ -36,8 +37,14 @@ describe("ListPizzas component", () => {
 
     expect(
       Array.from(element.querySelectorAll("h3")).map((e) => e.innerHTML)
-    ).toEqual([]);
+    ).toEqual(["he"]);
 
     expect(element.innerHTML).toMatchSnapshot();
   });
 });
+
+
+
+
+
+

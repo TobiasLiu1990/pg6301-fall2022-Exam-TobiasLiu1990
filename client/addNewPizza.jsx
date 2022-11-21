@@ -52,7 +52,6 @@ export function AddNewPizza() {
             onChange={(e) => setAllergen(e.target.value)}
           />
         </div>
-
         <button>Submit Pizza</button>
       </form>
     </div>
