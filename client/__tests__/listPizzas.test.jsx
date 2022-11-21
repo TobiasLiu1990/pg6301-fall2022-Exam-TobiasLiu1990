@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { act } from "react-dom/test-utils";
-import {ListPizzas} from "../listPizzas";
+import { ListPizzas } from "../listPizzas";
 
 const pizzas = [
   {
@@ -28,23 +28,45 @@ describe("ListPizzas component", () => {
   });
 
   it("should show pizzas", async () => {
-    const pizzas = [{ pizza: "pizza 1"}, {pizza: "pizza 2" }];
     const element = document.createElement("div");
 
     await act(async () => {
-      ReactDOM.render(<ListPizzas />, element);
+      ReactDOM.render(
+        <ListPizzas
+          pizzaApi={{
+            listPizzas: () => new Promise((resolve) => resolve(pizzas)),
+          }}
+        />,
+        element
+      );
     });
+
+    expect(element.querySelector("h3").innerHTML).toEqual("Pizza: " + pizzas[0].pizza);
+
 
     expect(
       Array.from(element.querySelectorAll("h3")).map((e) => e.innerHTML)
-    ).toEqual(["he"]);
+    ).toEqual(["Pizza: pizza 1", "Pizza: pizza 2"]);
 
     expect(element.innerHTML).toMatchSnapshot();
   });
+
+  it("should show error message", async () => {
+    const element = document.createElement("div");
+
+    await act(async () => {
+      ReactDOM.render(
+        <ListPizzas
+          listPizzas={() => {
+            throw new Error("Error, something went wrong");
+          }}
+        />,
+        element
+      );
+    });
+
+    expect(element.querySelector("#error-list-pizzas-div").innerHTML).toEqual(
+      "Error, something went wrong"
+    );
+  });
 });
-
-
-
-
-
-

@@ -46,7 +46,7 @@ export function AllergensCard({ allergens }) {
 export function ListPizzas({ pizzaApi }) {
   const { loading, error, data } = useLoader(async () => {
       return await pizzaApi.listPizzas();
-    // return fetchJSON("/api/menu");
+
   });
   const [order, setOrder] = useState(0);
 
@@ -56,7 +56,7 @@ export function ListPizzas({ pizzaApi }) {
 
   if (error) {
     return (
-      <div style={{ border: "solid red 1px", background: "red" }}>
+      <div id="error-list-pizzas-div" style={{ border: "solid red 1px", background: "red" }}>
         An error has occurred in ShowMenu() : {error.toString()}
       </div>
     );
