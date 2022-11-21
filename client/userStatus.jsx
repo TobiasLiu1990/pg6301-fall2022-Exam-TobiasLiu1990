@@ -69,15 +69,8 @@ export function RegisterNewAccount() {
 
         await fetchJSON("/api/login/register", {
             method: "post",
-            body: JSON.stringify({ username, password, fullName }),
-            headers: {
-                "Content-Type": "application/json",
-            },
+            json: ({ username, password, fullName }),
         });
-
-        setUsername("");
-        setPassword("");
-        setFullName("");
     }
 
     return (

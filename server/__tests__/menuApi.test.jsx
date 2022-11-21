@@ -25,7 +25,7 @@ afterAll(() => {
 
 describe("menu api", () => {
   //POST
-  it("should add a pizza", async () => {
+  it("should add and find the pizza", async () => {
     await request(app)
       .post("/api/menu/new")
       .send({

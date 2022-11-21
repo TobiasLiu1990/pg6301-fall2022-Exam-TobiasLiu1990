@@ -1,5 +1,4 @@
 import { Router } from "express";
-import bodyParser from "body-parser";
 
 /**
  * Path: /api/login
@@ -27,8 +26,7 @@ export function UserApi(mongoDatabase) {
   //Add user to DB
   userRouter.post("/register", (req, res) => {
     const { username, fullName, password } = req.body;
-
-    mongoDatabase.collection("users").insertOne({
+    const result = mongoDatabase.collection("users").insertOne({
       username,
       fullName,
       password,
