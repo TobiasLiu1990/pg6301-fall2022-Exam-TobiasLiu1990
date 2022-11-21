@@ -4,4 +4,4 @@
 * But it did not work. After trying multiple times to connect to it either by creating from GitHub repos or adding it from a new project, it did not work.
 * It kept telling me that the repo does not exist. So i made my own repo for this exam.
 
-* Link: https://github.com/TobiasLiu1990/pg6301-fall2022-Exam-TobiasLiu1990.git
+* Link: https://github.com/TobiasLiu1990/pg6301-fall2022-Exam-TobiasLiu1990
