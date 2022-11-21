@@ -1,0 +1,35 @@
+{
+  "name": "exam-tobiasliu1990",
+  "version": "1.0.0",
+  "description": "Catering business",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently npm:dev:client npm:dev:server",
+    "dev:client": "cd client && npm run dev",
+    "dev:server": "cd server && npm run dev",
+    "test": "npm run test:client && npm run test:server",
+    "test:client": "cd client && npm test -- --collectCoverage",
+    "test:server": "cd server && npm test -- --collectCoverage",
+    "prettier:check": "prettier --check **/*.{jsx,js} client/__tests__/**/*.{jsx,js}",
+    "prettier:write": "prettier --write **/*.{jsx,js} client/__tests__/**/*.{jsx,js}",
+    "build": "npm run build:server && npm run build:server",
+    "build:server": "cd server && npm run build",
+    "build:client": "cd client && npm run build",
+    "start": "cd server && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TobiasLiu1990/pg6301-fall2022-Exam-TobiasLiu1990.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TobiasLiu1990/pg6301-fall2022-Exam-TobiasLiu1990/issues"
+  },
+  "homepage": "https://github.com/TobiasLiu1990/pg6301-fall2022-Exam-TobiasLiu1990#readme",
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "prettier": "^2.7.1"
+  }
+}
