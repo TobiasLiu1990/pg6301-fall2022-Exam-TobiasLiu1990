@@ -1,28 +1,28 @@
 import React from "react";
 import * as ReactDOM from "react-dom";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
+import { CateringApplication } from "./cateringApplication";
 
 function FrontPage() {
-  return null;
+  return (
+      <div>
+        <h1>Our special pizzas of oddities</h1>
+
+        <ul>
+          <li>
+            <Link to={"/menu"}> Go to our Menu</Link>
+          </li>
+
+          <li>
+            <Link to={"/menu/new"}>Add a new pizza dish</Link>
+          </li>
+        </ul>
+      </div>
+  );
 }
 
 function Login() {
   return null;
-}
-
-function CateringApplication() {
-  //List all dishes
-  //Create dishes if admin staff
-  //Order dish
-
-  return (
-    <Routes>
-      <Route path={"/"} element={<ListPizzas />} />
-      <Route path={"/order"} element={<Cart />} />
-      <Route path={"/new"} element={<AddNewPizzaDish />} />
-      <Route path={"*"} element={<h1>Catering side not found!</h1>} />
-    </Routes>
-  );
 }
 
 function Application() {
@@ -30,8 +30,8 @@ function Application() {
     <BrowserRouter>
       <Routes>
         <Route path={"/"} element={<FrontPage />} />
-        <Route path={"/login"} element={<Login />} />
-        <Route path={"/menu"} element={<CateringApplication />} />
+        <Route path={"/login/*"} element={<Login />} />
+        <Route path={"/menu/*"} element={<CateringApplication />} />
         <Route path={"*"} element={<h1>Page not found!</h1>} />
       </Routes>
     </BrowserRouter>
