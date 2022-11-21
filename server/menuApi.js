@@ -7,33 +7,33 @@ import { Router } from "express";
  */
 
 export function MenuApi(mongoDatabase) {
-    const menuRouter = new Router();
+  const menuRouter = new Router();
 
-    menuRouter.get("/", async (req, res) => {
-        const menu = await mongoDatabase
-            .collection("menu")
-            .find()
-            .map(({ pizza, price, ingredients, allergens }) => ({
-                pizza,
-                price,
-                ingredients,
-                allergens,
-                }))
-            .toArray();
+  menuRouter.get("/", async (req, res) => {
+    const menu = await mongoDatabase
+      .collection("menu")
+      .find()
+      .map(({ pizza, price, ingredients, allergens }) => ({
+        pizza,
+        price,
+        ingredients,
+        allergens,
+      }))
+      .toArray();
 
-        return res.json(menu);
+    return res.json(menu);
+  });
+
+  menuRouter.post("/new", (req, res) => {
+    const { pizza, price, ingredient, allergen } = req.body;
+    const result = mongoDatabase.collection("menu").insertOne({
+      pizza,
+      price,
+      ingredients: [ingredient],
+      allergens: [allergen],
     });
+    res.sendStatus(200);
+  });
 
-    menuRouter.post("/new", (req, res) => {
-        const {pizza, price, ingredient, allergen} = req.body;
-        const result = mongoDatabase.collection("menu").insertOne({
-            pizza,
-            price,
-            ingredients: [ingredient],
-            allergens: [allergen]
-        });
-        res.sendStatus(200)
-    });
-
-    return menuRouter;
+  return menuRouter;
 }

@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ListPizzas component should show loading screen 1`] = `"<div>Loading menu...</div>"`;
+
+exports[`ListPizzas component should show pizzas 1`] = `"<div style="border: 1px solid red; background: red;">An error has occurred in ShowMenu() : ReferenceError: fetch is not defined</div>"`;

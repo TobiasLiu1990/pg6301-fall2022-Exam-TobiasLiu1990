@@ -116,66 +116,55 @@ function AddNewPizza() {
   const [ingredient, setIngredient] = useState("");
   const [allergen, setAllergen] = useState("");
 
-  const [ingredients, setIngredients] = useState([]);
-  const [allergens, setAllergens] = useState([]);
+  let ingredients = [];
+  let allergens = [];
 
-  function handleSubmitPizza(e) {
-    e.preventDefault();
-    setPizza(e.target.value);
-    setPrice(e.target.value);
-  }
+  ingredients = ingredient.split(" ");
+  allergens = allergen.split(" ");
 
-  function handleSubmitIngredients(e) {
-    e.preventDefault();
-    setIngredient(e.target.value);
-    setIngredients((prevIngredients) => [...prevIngredients, ingredient]);
-  }
 
-  function handleSubmitAllergens(e) {
+      async function handleSubmit(e) {
     e.preventDefault();
-    setAllergen(e.target.value);
-    setAllergens((prevAllergens) => [...prevAllergens, allergen]);
+
+
+    await fetchJSON("/api/menu/new", {
+      method: "post",
+      json: { pizza, price, ingredients, allergens },
+    });
   }
 
   return (
     <div>
       <h1>Add your new pizza</h1>
 
-      <form onSubmit={handleSubmitPizza}>
+      <form onSubmit={handleSubmit}>
         <div>
           Pizza name:
           <input value={pizza} onChange={(e) => setPizza(e.target.value)} />
         </div>
+
         <div>
           Price:
           <input value={price} onChange={(e) => setPrice(e.target.value)} />
         </div>
-        <div>
-          <button>Submit Pizza</button>
-        </div>
-      </form>
 
-      <br></br>
-
-      <form onSubmit={handleSubmitIngredients}>
         <div>
-          Ingredient:
+          Ingredient (Separate with space):
           <input
             value={ingredient}
             onChange={(e) => setIngredient(e.target.value)}
           />
-          <button>Submit ingredients</button>
         </div>
-      </form>
-      <form onSubmit={handleSubmitAllergens}>
+
         <div>
-          Allergen:
+          Allergen (Separate with space):
           <input
             value={allergen}
             onChange={(e) => setAllergen(e.target.value)}
           />
-          <button>Submit allergens</button>
         </div>
+
+        <button>Submit Pizza</button>
       </form>
     </div>
   );
@@ -185,9 +174,9 @@ export function CateringApplication() {
   return (
     <Routes>
       <Route path={"/"} element={<ListPizzas />} />
-        <Route path={"/new"} element={<AddNewPizza />} />
-        <Route path={"/order"} element={<Cart />} />
-        <Route path={"*"} element={<h1>Catering side not found!</h1>} />
+      <Route path={"/new"} element={<AddNewPizza />} />
+      <Route path={"/order"} element={<Cart />} />
+      <Route path={"*"} element={<h1>Catering side not found!</h1>} />
     </Routes>
   );
 }
