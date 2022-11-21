@@ -28,16 +28,18 @@ describe("ListPizzas component", () => {
   });
 
   it("should show pizzas", async () => {
-    const pizzas = [[ {pizza: "pizza 1"}, {pizza: "pizza 2"} ]]
+    const pizzas = [ {pizza: "pizza 1"}, {pizza: "pizza 2"} ]
     const element = document.createElement("div");
 
     await act(async () => {
-      ReactDOM.render(<ListPizzas listPizzas={() => pizzas}/>, element);
+      ReactDOM.render(<ListPizzas/>, element);
     });
 
     expect(
         Array.from(element.querySelectorAll("h3")).map((e) => e.innerHTML)
     ).toEqual(["pizza 1", "pizza 2"])
+
+    expect(element.innerHTML).toMatchSnapshot();
   });
 
 

@@ -30,7 +30,7 @@ function PizzaCard({
   return (
     <div>
       <button onClick={handleClick}>Order</button>
-      <h4 style={{ margin: "0", border: "0" }}>Pizza: {pizza}</h4>
+      <h3 style={{ margin: "0", border: "0" }}>Pizza: {pizza}</h3>
       <h4 style={{ margin: "0", border: "0" }}>Price: {price}</h4>
       <h4>
         Ingredients: <IngredientsCard ingredients={ingredients} />
