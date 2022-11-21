@@ -11,7 +11,18 @@ function Login() {
 }
 
 function CateringApplication() {
-  return null;
+  //List all dishes
+  //Create dishes if admin staff
+  //Order dish
+
+  return (
+    <Routes>
+      <Route path={"/"} element={<ListPizzas />} />
+      <Route path={"/order"} element={<Cart />} />
+      <Route path={"/new"} element={<AddNewPizzaDish />} />
+      <Route path={"*"} element={<h1>Catering side not found!</h1>} />
+    </Routes>
+  );
 }
 
 function Application() {
