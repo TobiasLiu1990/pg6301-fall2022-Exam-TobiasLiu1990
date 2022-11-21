@@ -25,12 +25,12 @@ export function MenuApi(mongoDatabase) {
   });
 
   menuRouter.post("/new", (req, res) => {
-    const { pizza, price, ingredient, allergen } = req.body;
+    const { pizza, price, ingredients, allergens } = req.body;
     const result = mongoDatabase.collection("menu").insertOne({
       pizza,
       price,
-      ingredients: [ingredient],
-      allergens: [allergen],
+      ingredients,
+      allergens,
     });
     res.sendStatus(200);
   });

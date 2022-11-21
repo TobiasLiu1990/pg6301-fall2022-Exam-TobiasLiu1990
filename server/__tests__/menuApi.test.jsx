@@ -31,16 +31,34 @@ describe("menu api", () => {
       .send({
         pizza: "Test pizza",
         price: 100,
-        ingredients: ["ingredient 1"],
-        allergens: ["allergy test 1"],
+        ingredients: "ham meat",
+        allergens: "proteins oh no",
       })
       .expect(200);
 
     //GET
     expect(
       (await request(app).get("/api/menu").expect(200)).body.map(
-        ({ title }) => title
+        ({ pizza }) => pizza
       )
     ).toContain("Test pizza");
+
+      expect(
+          (await request(app).get("/api/menu").expect(200)).body.map(
+              ({ price }) => price
+          )
+      ).toContain(100);
+
+      expect(
+          (await request(app).get("/api/menu").expect(200)).body.map(
+              ({ ingredients }) => ingredients
+          )
+      ).toContain("ham meat");
+
+      expect(
+          (await request(app).get("/api/menu").expect(200)).body.map(
+              ({ allergens }) => allergens
+          )
+      ).toContain("proteins oh no");
   });
 });

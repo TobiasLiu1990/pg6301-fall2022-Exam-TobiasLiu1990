@@ -48,7 +48,7 @@ function IngredientsCard({ ingredients }) {
   return (
     <ul style={{ margin: "0", border: "0" }}>
       {ingredients.map((i) => (
-        <li id={i}>{i}</li>
+        <li key={i}>{i}</li>
       ))}
     </ul>
   );
@@ -84,7 +84,7 @@ export function ListPizzas() {
 
   async function handleClick(e) {
     e.preventDefault();
-    setOrder(e.target.value);
+    setOrder(e.target.value++);
 
     console.log("Dish added" + order);
   }
@@ -122,10 +122,8 @@ function AddNewPizza() {
   ingredients = ingredient.split(" ");
   allergens = allergen.split(" ");
 
-
-      async function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-
 
     await fetchJSON("/api/menu/new", {
       method: "post",
