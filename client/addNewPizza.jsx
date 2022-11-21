@@ -3,13 +3,13 @@ import React, { useState } from "react";
 
 function FormInput({ label, value, onChangeValue }) {
   return (
-    <>
+    <div>
       <label>
         <strong>{label}</strong>{" "}
         <input value={value} onChange={(e) => onChangeValue(e.target.value)} />
       </label>
       <br></br>
-    </>
+    </div>
   );
 }
 
@@ -28,7 +28,7 @@ export function AddNewPizza({ pizzaApi }) {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    pizzaApi.addPizza({ pizza, price, ingredients, allergens })
+    pizzaApi.addPizza({ pizza, price, ingredients, allergens })   //For test
 
     await fetchJSON("/api/menu/new", {
       method: "post",

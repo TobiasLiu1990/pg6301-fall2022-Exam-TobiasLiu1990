@@ -14,14 +14,50 @@ describe("add pizza component", () => {
       element.querySelectorAll("form label strong")
     ).map((label) => label.innerHTML);
 
-    expect(inputLabels).toEqual(["Pizza: ", "Price: ", "Ingredients (Separate by space): ", "Allergen (Separate with space): "])
+    expect(inputLabels).toEqual([
+      "Pizza: ",
+      "Price: ",
+      "Ingredients (Separate by space): ",
+      "Allergen (Separate with space): ",
+    ]);
   });
 
-  it('should add a pizza', async () => {
+  it("should add a pizza on submit", async () => {
+    //Mock function
     const addPizza = jest.fn();
 
     const element = document.createElement("div");
-    await act(async () => ReactDOM.render(<AddNewPizza pizzaApi={{ addPizza }}/>))
+    await act(async () =>
+      ReactDOM.render(<AddNewPizza pizzaApi={{ addPizza }} />, element)
+    );
+
+    //Send the title declared above to onChange. Select the first form input, which is title.
+    Simulate.change(element.querySelector("form div:nth-of-type(1) input"), {
+        target: {value: "Tasty pizza"},
+    });
+
+    Simulate.submit(element.querySelector("form"));
+
+    expect(addPizza).toBeCalledWith({
+      pizza: "Tasty pizza",
+      price: "",
+      ingredients: [""],
+      allergens: [""]
+    });
+
 
   });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+

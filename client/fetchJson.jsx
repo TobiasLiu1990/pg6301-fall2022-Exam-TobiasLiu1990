@@ -1,7 +1,7 @@
 //Error handling
 export class HttpError extends Error {
   constructor(status, statusText) {
-    super("My custom exception " + statusText);
+    super("Exception message will show here: " + statusText);
     this.status = status;
   }
 }
