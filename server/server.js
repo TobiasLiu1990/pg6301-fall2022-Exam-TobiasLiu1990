@@ -36,7 +36,6 @@ app.use(
   MenuApi(mongoDbClient.db(process.env.MONGODB_DATABASE || "test_database"))
 );
 
-
 const users = [
   {
     username: "admin",

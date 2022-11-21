@@ -1,8 +1,7 @@
 import React from "react";
-import ReactDOM from "react-dom"
+import ReactDOM from "react-dom";
 import { act } from "react-dom/test-utils";
-import {ListPizzas} from "../cateringApplication";
-
+import { ListPizzas } from "../cateringApplication";
 
 const pizzas = [
   {
@@ -15,14 +14,14 @@ const pizzas = [
     pizza: "pizza 2",
     price: 500,
     ingredients: ["tomato", "cheese", "peanuts"],
-    allergens: ["casein", "nuts"]
+    allergens: ["casein", "nuts"],
   },
 ];
 
 describe("ListPizzas component", () => {
   it("should show loading screen", () => {
     const element = document.createElement("div");
-    ReactDOM.render(<ListPizzas/>, element);
+    ReactDOM.render(<ListPizzas />, element);
 
     expect(element.innerHTML).toMatchSnapshot();
   });
@@ -32,14 +31,13 @@ describe("ListPizzas component", () => {
     const element = document.createElement("div");
 
     await act(async () => {
-      ReactDOM.render(<ListPizzas/>, element);
+      ReactDOM.render(<ListPizzas />, element);
     });
 
     expect(
-        Array.from(element.querySelectorAll("h3")).map((e) => e.innerHTML)
-    ).toEqual([])
+      Array.from(element.querySelectorAll("h3")).map((e) => e.innerHTML)
+    ).toEqual([]);
 
     expect(element.innerHTML).toMatchSnapshot();
   });
-
 });

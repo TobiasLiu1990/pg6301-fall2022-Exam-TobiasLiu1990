@@ -43,22 +43,22 @@ describe("menu api", () => {
       )
     ).toContain("Test pizza");
 
-      expect(
-          (await request(app).get("/api/menu").expect(200)).body.map(
-              ({ price }) => price
-          )
-      ).toContain(100);
+    expect(
+      (await request(app).get("/api/menu").expect(200)).body.map(
+        ({ price }) => price
+      )
+    ).toContain(100);
 
-      expect(
-          (await request(app).get("/api/menu").expect(200)).body.map(
-              ({ ingredients }) => ingredients
-          )
-      ).toContain("ham meat");
+    expect(
+      (await request(app).get("/api/menu").expect(200)).body.map(
+        ({ ingredients }) => ingredients
+      )
+    ).toContain("ham meat");
 
-      expect(
-          (await request(app).get("/api/menu").expect(200)).body.map(
-              ({ allergens }) => allergens
-          )
-      ).toContain("proteins oh no");
+    expect(
+      (await request(app).get("/api/menu").expect(200)).body.map(
+        ({ allergens }) => allergens
+      )
+    ).toContain("proteins oh no");
   });
 });

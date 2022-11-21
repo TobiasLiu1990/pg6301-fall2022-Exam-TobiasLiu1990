@@ -58,75 +58,73 @@ export function Login() {
 }
 
 export function RegisterNewAccount() {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [fullName, setFullName] = useState("");
-    const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [fullName, setFullName] = useState("");
+  const navigate = useNavigate();
 
-    async function handleSubmit(e) {
-        e.preventDefault();
-        navigate("../");
+  async function handleSubmit(e) {
+    e.preventDefault();
+    navigate("../");
 
-        await fetchJSON("/api/login/register", {
-            method: "post",
-            json: ({ username, password, fullName }),
-        });
-    }
+    await fetchJSON("/api/login/register", {
+      method: "post",
+      json: { username, password, fullName },
+    });
+  }
 
-    return (
-        <form onSubmit={handleSubmit}>
-            <h1>Register new user account</h1>
-            <div>
-                Username:{" "}
-                <input
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-            </div>
-            <div>
-                Full name:{" "}
-                <input
-                    type="text"
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                />
-            </div>
-            <div>
-                Password:{" "}
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-            </div>
-            <button>Log in</button>
-        </form>
-    );
+  return (
+    <form onSubmit={handleSubmit}>
+      <h1>Register new user account</h1>
+      <div>
+        Username:{" "}
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+      </div>
+      <div>
+        Full name:{" "}
+        <input
+          type="text"
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
+        />
+      </div>
+      <div>
+        Password:{" "}
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </div>
+      <button>Log in</button>
+    </form>
+  );
 }
 
 export function LogoutButton(reloadPage) {
-    return (
-        <button
-            onClick={async () => {
-                await fetch("/api/login", {
-                    method: "delete",
-                });
-                reloadPage();
-            }}
-        >
-            Log out
-        </button>
-    );
+  return (
+    <button
+      onClick={async () => {
+        await fetch("/api/login", {
+          method: "delete",
+        });
+        reloadPage();
+      }}
+    >
+      Log out
+    </button>
+  );
 }
 
 export function UserStatus() {
-    return (
-        <Routes>
-            <Route path={"/"} element={<LoginLinks />} />
-            <Route path={"/login"} element={<Login />}></Route>
-        </Routes>
-    );
+  return (
+    <Routes>
+      <Route path={"/"} element={<LoginLinks />} />
+      <Route path={"/login"} element={<Login />}></Route>
+    </Routes>
+  );
 }
-
-
