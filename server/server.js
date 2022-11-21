@@ -4,22 +4,34 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import {MongoClient} from "mongodb";
 import * as dotenv from "dotenv";
+import {MenuApi} from "./menuApi.js";
 
 dotenv.config();
 
 const app = express();
-app.use(bodyParser.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
 //MongoDB connection
 const mongoDbClient = new MongoClient(process.env.MONGODB_URL);
+mongoDbClient.connect().then(async () => {
+    console.log("Connected to MongoDB");
+
+    app.use("/api/menu", MenuApi(mongoDbClient.db(process.env.MONGODB_DATABASE || "test_database"))
+    );
+});
 
 
 
 
 
-
-
+// Middleware
+app.use(cookieParser(process.env.COOKIE_SECRET)); //Define the secret everyone should use.
+app.use(bodyParser.json()); //Need to tell Express to parse JSON
+app.use(
+    bodyParser.urlencoded({
+        extended: false,
+    })
+);
 
 
 
