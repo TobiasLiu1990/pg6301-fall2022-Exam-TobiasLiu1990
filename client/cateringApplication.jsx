@@ -1,7 +1,7 @@
 import { Link, Route, Routes } from "react-router-dom";
 import { ListPizzas } from "./listPizzas";
 import { AddNewPizza } from "./addNewPizza";
-import {fetchJSON} from "./fetchJson";
+import {fetchJSON} from "./lib/fetchJson";
 
 export function ShowMenu() {
   return (

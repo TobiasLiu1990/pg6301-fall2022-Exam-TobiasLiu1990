@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLoader } from "./useLoader";
+import { useLoader } from "./lib/useLoader";
 import { useNavigate } from "react-router-dom";
 
 export function PizzaCard({

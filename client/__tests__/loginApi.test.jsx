@@ -1,8 +1,8 @@
 import ReactDOM from "react-dom";
 import React from "react";
-import {Login, LoginForTest} from "../userStatus";
 import { act, Simulate } from "react-dom/test-utils";
 import { MemoryRouter } from "react-router-dom";
+import {Login, LoginForTest} from "../login";
 
 describe("login component", () => {
   it("should show login form", async () => {

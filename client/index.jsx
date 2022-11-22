@@ -3,8 +3,9 @@ import * as ReactDOM from "react-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { CateringApplication } from "./cateringApplication";
 import { FrontPage } from "./frontPage";
-import { Login, RegisterNewAccount } from "./userStatus";
-import { fetchJSON } from "./fetchJson";
+import { RegisterNewAccount } from "./userStatus";
+import { fetchJSON } from "./lib/fetchJson";
+import {Login} from "./login";
 
 function Application() {
   const loginApi = {

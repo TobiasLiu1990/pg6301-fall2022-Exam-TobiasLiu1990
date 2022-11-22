@@ -1,6 +1,6 @@
 import * as React from "react";
-import { useLoader } from "./useLoader";
-import { fetchJSON } from "./fetchJson";
+import { useLoader } from "./lib/useLoader";
+import { fetchJSON } from "./lib/fetchJson";
 import { ShowMenu } from "./cateringApplication";
 import { LoginLinks, LogoutButton } from "./userStatus";
 
