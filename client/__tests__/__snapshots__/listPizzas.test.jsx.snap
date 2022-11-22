@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`ListPizzas component should show loading screen 1`] = `"<div>Loading menu...</div>"`;
-
-exports[`ListPizzas component should show pizzas 1`] = `"<div><form><button>Go back to start page</button></form><hr><h1>Our attractive menu</h1><div><div><h3 style="margin: 0px; border: 0px;">Pizza: pizza 1</h3><h4 style="margin: 0px; border: 0px;">Price: 100</h4><h4>Ingredients: <ul style="margin: 0px; border: 0px;"><li>tomato</li><li>cheese</li></ul></h4><h4><div>Allergens: <ul style="margin: 0px; border: 0px;"><li>casein</li></ul></div></h4></div><div><h3 style="margin: 0px; border: 0px;">Pizza: pizza 2</h3><h4 style="margin: 0px; border: 0px;">Price: 500</h4><h4>Ingredients: <ul style="margin: 0px; border: 0px;"><li>tomato</li><li>cheese</li><li>peanuts</li></ul></h4><h4><div>Allergens: <ul style="margin: 0px; border: 0px;"><li>casein</li><li>nuts</li></ul></div></h4></div></div></div>"`;
