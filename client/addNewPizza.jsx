@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function FormInput({ label, value, onChangeValue }) {
   return (
@@ -34,14 +34,13 @@ export function AddNewPizza() {
       body: JSON.stringify({ pizza, price, ingredients, allergens }),
       headers: {
         "Content-Type": "application/json",
-      }
+      },
     });
   }
 
   function handleSubmitBack(e) {
     e.preventDefault();
-    navigate("/")
-
+    navigate("/");
   }
 
   return (
@@ -67,11 +66,8 @@ export function AddNewPizza() {
           value={allergen}
           onChangeValue={setAllergen}
         />
-
         <button>Submit Pizza</button>
       </form>
-
-
     </div>
   );
 }
@@ -91,29 +87,29 @@ export function AddNewPizzaForTest({ pizzaApi }) {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    pizzaApi.addPizza({ pizza, price, ingredients, allergens })   //For test
+    pizzaApi.addPizza({ pizza, price, ingredients, allergens }); //For test
   }
 
   return (
-      <div>
-        <h1>Add your new pizza</h1>
+    <div>
+      <h1>Add your new pizza</h1>
 
-        <form onSubmit={handleSubmit}>
-          <FormInput label={"Pizza: "} value={pizza} onChangeValue={setPizza} />
-          <FormInput label={"Price: "} value={price} onChangeValue={setPrice} />
-          <FormInput
-              label={"Ingredients (Separate by space): "}
-              value={ingredient}
-              onChangeValue={setIngredient}
-          />
-          <FormInput
-              label={"Allergen (Separate with space): "}
-              value={allergen}
-              onChangeValue={setAllergen}
-          />
+      <form onSubmit={handleSubmit}>
+        <FormInput label={"Pizza: "} value={pizza} onChangeValue={setPizza} />
+        <FormInput label={"Price: "} value={price} onChangeValue={setPrice} />
+        <FormInput
+          label={"Ingredients (Separate by space): "}
+          value={ingredient}
+          onChangeValue={setIngredient}
+        />
+        <FormInput
+          label={"Allergen (Separate with space): "}
+          value={allergen}
+          onChangeValue={setAllergen}
+        />
 
-          <button>Submit Pizza</button>
-        </form>
-      </div>
+        <button>Submit Pizza</button>
+      </form>
+    </div>
   );
 }

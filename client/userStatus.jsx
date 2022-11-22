@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
-import { Link, Route, Routes, useNavigate } from "react-router-dom";
-import { fetchJSON, HttpError } from "./fetchJson";
+import { Form, Link, Route, Routes, useNavigate } from "react-router-dom";
+import { fetchJSON } from "./fetchJson";
 
 export function LoginLinks() {
   return (
@@ -9,6 +9,18 @@ export function LoginLinks() {
       <Link to={"/login"}>Login</Link>
       <br></br>
       <Link to={"/register"}>Register new account</Link>
+    </div>
+  );
+}
+
+function FormInput({ label, value, onChangeValue }) {
+  return (
+    <div>
+      <label>
+        <strong>{label}</strong>{" "}
+        <input value={value} onChange={(e) => onChangeValue(e.target.value)} />
+      </label>
+      <br></br>
     </div>
   );
 }
@@ -38,7 +50,7 @@ export function Login() {
 
   function handleSubmitBack(e) {
     e.preventDefault();
-    navigate("/")
+    navigate("/");
   }
 
   return (
@@ -49,28 +61,68 @@ export function Login() {
 
       <hr></hr>
 
+      <h1>Please login!</h1>
+
       <form onSubmit={handleSubmit}>
-        <h1>Please login!</h1>
-        <div>
-          Username:{" "}
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div>
-          Password:{" "}
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
+        <FormInput
+          label={"Username: "}
+          value={username}
+          onChangeValue={setUsername}
+        />
+        <FormInput
+          label={"Password: "}
+          value={password}
+          onChangeValue={setPassword}
+        />
         <button>Log in</button>
       </form>
     </div>
   );
+}
+
+export function LoginForTest({ loginApi }) {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+
+    loginApi.fakeLogin({ username, password }); //For test
+
+    function handleSubmitBack(e) {
+        e.preventDefault();
+        navigate("/");
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        loginApi.fakeLogin({ username, password })      //For test
+    }
+
+    return (
+        <div>
+            <form onSubmit={handleSubmitBack}>
+                <button>Go back to start page</button>
+            </form>
+
+            <hr></hr>
+
+            <h1>Please login!</h1>
+
+            <form onSubmit={handleSubmit}>
+                <FormInput
+                    label={"Username: "}
+                    value={username}
+                    onChangeValue={setUsername}
+                />
+                <FormInput
+                    label={"Password: "}
+                    value={password}
+                    onChangeValue={setPassword}
+                />
+                <button>Log in</button>
+            </form>
+        </div>
+    );
 }
 
 export function RegisterNewAccount() {
@@ -149,10 +201,16 @@ export function LogoutButton(reloadPage) {
 }
 
 export function UserStatus() {
+  const loginApi = {
+    async tryUser() {
+      return await fetchJSON("/api/login");
+    },
+  };
+
   return (
     <Routes>
       <Route path={"/"} element={<LoginLinks />} />
-      <Route path={"/login"} element={<Login />}></Route>
+      <Route path={"/login"} element={<Login loginApi={loginApi} />}></Route>
     </Routes>
   );
 }

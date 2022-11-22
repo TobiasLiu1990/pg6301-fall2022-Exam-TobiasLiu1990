@@ -25,8 +25,8 @@ describe("add pizza component", () => {
   it("should add a pizza on submit", async () => {
     //Mock function
     const addPizza = jest.fn();
-
     const element = document.createElement("div");
+
     await act(async () =>
       ReactDOM.render(<AddNewPizzaForTest pizzaApi={{ addPizza }} />, element)
     );
