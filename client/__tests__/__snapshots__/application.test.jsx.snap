@@ -1,7 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`application component should render 1`] = `"<div>Page loading...</div>"`;
-
-exports[`index component should render 1`] = `"<div>Page loading...</div>"`;
-
-exports[`index render should render 1`] = `"<div>Page loading...</div>"`;

@@ -1,7 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`cateringApplication render should render ShowMenu 1`] = `"<div><h1>Our special pizzas of oddities</h1><ul><li><a href="/menu">Go to our Menu</a></li><li>Only for administrators</li></ul></div>"`;
-
 exports[`cateringApplication render should show Links 1`] = `"<div><h1>Our special pizzas of oddities</h1><ul><li><a href="/menu">Go to our Menu</a></li><li>Only for administrators</li></ul></div>"`;
 
 exports[`cateringApplication render should show Routes 1`] = `"<div>Loading menu...</div>"`;
