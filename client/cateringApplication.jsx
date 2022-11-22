@@ -5,7 +5,7 @@ import { AddNewPizza } from "./addNewPizza";
 import { fetchJSON } from "./lib/fetchJson";
 
 export function ShowMenu({ user }) {
-    checkUserRole = user.role;
+  checkUserRole = user.role;
 
   return (
     <div>
@@ -38,7 +38,11 @@ export function CateringApplication() {
   return (
     <Routes>
       <Route path={"/"} element={<ListPizzas pizzaApi={pizzaApi} />} />
-        { checkUserRole === "admin" ? <Route path={"/new"} element={<AddNewPizza />} /> : ""}
+      {checkUserRole === "admin" ? (
+        <Route path={"/new"} element={<AddNewPizza />} />
+      ) : (
+        ""
+      )}
     </Routes>
   );
 }

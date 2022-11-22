@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import {Form, useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FormInput } from "./lib/formInput";
 
 export function RegisterNewAccount() {
@@ -19,10 +19,9 @@ export function RegisterNewAccount() {
       body: JSON.stringify({ username, password, fullName }),
       headers: {
         "Content-Type": "application/json",
-      }
+      },
     });
   }
-
 
   function handleSubmitBack() {
     navigate("/");
@@ -38,11 +37,7 @@ export function RegisterNewAccount() {
 
       <h1>Register new user account</h1>
       <form onSubmit={handleSubmit}>
-        <FormInput
-          label={"Role: "}
-          value={role}
-          onChangeValue={setRole}
-        />
+        <FormInput label={"Role: "} value={role} onChangeValue={setRole} />
 
         <FormInput
           label={"Username: "}
@@ -97,11 +92,7 @@ export function RegisterNewAccountForTest({ registerApi }) {
 
       <h1>Register new user account</h1>
       <form onSubmit={handleSubmit}>
-        <FormInput
-            label={"Role: "}
-            value={role}
-            onChangeValue={setRole}
-        />
+        <FormInput label={"Role: "} value={role} onChangeValue={setRole} />
         <FormInput
           label={"Username: "}
           value={username}

@@ -47,8 +47,8 @@ const users = [
     role: "regular",
     username: "test",
     password: "test",
-    fullName: "Test Testersen"
-  }
+    fullName: "Test Testersen",
+  },
 ];
 
 //Middleware check user status
@@ -80,8 +80,8 @@ app.get("/api/menu/new", (req, res) => {
       return res.sendStatus(403);
     }
   }
-  setTimeout(checkRole, 400)
-})
+  setTimeout(checkRole, 400);
+});
 
 //Write to
 app.post("/api/login", (req, res) => {
@@ -107,8 +107,6 @@ app.delete("/api/login", (req, res) => {
 
 //Serve static files from dist
 app.use(express.static("../client/dist"));
-
-
 
 app.use((req, res, next) => {
   if (req.method === "GET" && !req.path.startsWith("/api/")) {
