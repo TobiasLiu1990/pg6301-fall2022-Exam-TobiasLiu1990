@@ -8,6 +8,7 @@ saying that the repo did not exist.
 So I created my own repo and used it for the exam.
 I also chose to run React 17, as it felt easier for me regarding jest. Also, to ignore the React 18 messages.
 
+
 * Link: https://github.com/TobiasLiu1990/pg6301-fall2022-Exam-TobiasLiu1990
 
 
@@ -51,3 +52,9 @@ I also chose to run React 17, as it felt easier for me regarding jest. Also, to 
   * For the server tests. I couldn't figure out how to configure it so GitHub Actions would use system environment variables to login.
     So I had to put the url+password in the actual MongoClient (Bad security but at least it's only a test cluster with no important data).
   * I also white-listed all IPs for the cluster in case it would block for checking that everything works later.
+
+
+  * Tried to deploy to Azure but sadly i cant fix the ":( Application Error". Im not sure if it is because of MongoDB
+    * I tried to:
+      * Add the Azure IP adresses under Settings - Outbound, to MongoDB.
+      * Add system envariables to Azure for connections to the MongoDB URL/PW/Database
