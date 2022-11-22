@@ -34,7 +34,7 @@ export function FrontPage() {
             Welcome: {user.fullName} - {user.username}
           </h2>
           <hr></hr>
-          <ShowMenu />
+          <ShowMenu user={user} />
           {logoutUser}
         </div>
       ) : (
