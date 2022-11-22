@@ -1,3 +1,4 @@
+import * as React from "react";
 import { Link, Route, Routes } from "react-router-dom";
 import { ListPizzas } from "./listPizzas";
 import { AddNewPizza } from "./addNewPizza";

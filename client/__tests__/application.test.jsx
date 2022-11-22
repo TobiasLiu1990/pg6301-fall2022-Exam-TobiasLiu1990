@@ -1,9 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {Application} from "../application";
+import component from "express";
 
 
-describe("index render", () => {
+describe("application component", () => {
     it("should render", () => {
         const element = document.createElement("div");
         ReactDOM.render(<Application/>, element)
@@ -11,8 +12,10 @@ describe("index render", () => {
         expect(element.innerHTML).toMatchSnapshot();
     })
 
-    it("should go to / (frontpage)", () => {
-        const wrapper = mount
-    })
+    it("should navigate ", () => {
+        const navigateSpy = jest.spyOn(router, 'navigate');
+        component.application();
+        expect(navigateSpy).toHaveBeenCalledWith(["/"]);
 
+    })
 })

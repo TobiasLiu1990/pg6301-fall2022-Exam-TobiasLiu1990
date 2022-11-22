@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`userStatus components should render LoginLinks 1`] = `"<div><a href="/login">Login</a><br><a href="/register">Register new account</a></div>"`;
+
+exports[`userStatus components should render LogoutButton 1`] = `"<button>Log out</button>"`;
