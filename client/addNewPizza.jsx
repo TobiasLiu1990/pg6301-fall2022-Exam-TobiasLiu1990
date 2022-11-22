@@ -13,7 +13,7 @@ function FormInput({ label, value, onChangeValue }) {
   );
 }
 
-export function AddNewPizza({ pizzaApi }) {
+export function AddNewPizza() {
   const [pizza, setPizza] = useState("");
   const [price, setPrice] = useState("");
   const [ingredient, setIngredient] = useState("");
