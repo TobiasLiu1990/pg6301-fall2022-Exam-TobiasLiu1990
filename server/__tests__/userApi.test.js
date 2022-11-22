@@ -10,7 +10,7 @@ dotenv.config();
 const app = express();
 app.use(bodyParser.json());
 
-const mongoDbClient = new MongoClient("mongodb+srv://Mayonnaise:Toalett123@cluster0.bdhu4o5.mongodb.net/?retryWrites=true&w=majority");
+const mongoDbClient = new MongoClient("mongodb+srv://Mayonnaise:Temp123@cluster0.bdhu4o5.mongodb.net/?retryWrites=true&w=majority");
 
 beforeAll(async () => {
   await mongoDbClient.connect();
