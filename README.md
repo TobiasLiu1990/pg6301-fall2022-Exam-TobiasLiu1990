@@ -58,3 +58,4 @@ I also chose to run React 17, as it felt easier for me regarding jest. Also, to 
     * I tried to:
       * Add the Azure IP adresses under Settings - Outbound, to MongoDB.
       * Add system envariables to Azure for connections to the MongoDB URL/PW/Database
+      * 
