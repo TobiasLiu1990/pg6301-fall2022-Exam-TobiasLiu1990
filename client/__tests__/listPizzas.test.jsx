@@ -41,8 +41,15 @@ describe("ListPizzas component", () => {
       );
     });
 
-    expect(element.querySelector("h3").innerHTML).toEqual("Pizza: " + pizzas[0].pizza);
+    expect(element.querySelector("h3").innerHTML).toEqual(
+      "Pizza: " + pizzas[0].pizza
+    );
 
+    expect(element.querySelector("h4").innerHTML).toEqual(
+        "Price: " + pizzas[0].price,
+        "Ingredients:" + pizzas[0].ingredients,
+        "Allergens: " + pizzas[0].allergens
+    );
 
     expect(
       Array.from(element.querySelectorAll("h3")).map((e) => e.innerHTML)
@@ -57,16 +64,19 @@ describe("ListPizzas component", () => {
     await act(async () => {
       ReactDOM.render(
         <ListPizzas
-          listPizzas={() => {
-            throw new Error("Error, something went wrong");
+          pizzaApi={{
+            listPizzas: () =>
+              new Promise((resolve, reject) => {
+                reject(new Error("Failed to fetch"));
+              }),
           }}
         />,
         element
       );
     });
 
-    expect(element.querySelector("#error-list-pizzas-div").innerHTML).toEqual(
-      "Error, something went wrong"
+    expect(element.querySelector("#error-list-pizzas-div").innerHTML).toContain(
+      "Failed to fetch"
     );
   });
 });

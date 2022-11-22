@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useLoader } from "./useLoader";
-import { fetchJSON } from "./fetchJson";
 
 export function PizzaCard({
   pizza: { pizza, price, ingredients, allergens },
@@ -57,7 +56,7 @@ export function ListPizzas({ pizzaApi }) {
   if (error) {
     return (
       <div id="error-list-pizzas-div" style={{ border: "solid red 1px", background: "red" }}>
-        An error has occurred in ShowMenu() : {error.toString()}
+        An error has occurred in ShowMenu(): {error.toString()}
       </div>
     );
   }
