@@ -73,6 +73,15 @@ app.get("/api/login", (req, res) => {
   setTimeout(respond, 400);
 });
 
+app.get("/api/menu/new", (req, res) => {
+  //Check role
+  function checkRole() {
+    if (req.user.role === "regular") {
+      return res.sendStatus(403);
+    }
+  }
+  setTimeout(checkRole, 400)
+})
 
 //Write to
 app.post("/api/login", (req, res) => {

@@ -21,7 +21,7 @@ export function Application() {
                 <Route path={"/login/*"} element={<Login/>}/>
                 <Route path={"/register/*"} element={<RegisterNewAccount registerApi={registerApi}/>}/>
                 <Route path={"/menu/*"} element={<CateringApplication/>}/>
-                <Route path={"*"} element={<h1>Page not found!</h1>}/>
+                <Route path={"/*"} element={<h1>Page not found!</h1>}/>
             </Routes>
         </BrowserRouter>
     );
