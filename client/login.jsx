@@ -2,6 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FormInput } from "./lib/formInput";
+import {fetchJSON} from "./lib/fetchJson";
 
 export function Login() {
   const [username, setUsername] = useState("");
@@ -11,13 +12,11 @@ export function Login() {
   async function handleSubmit(e) {
     e.preventDefault();
     //POST Login
-    const res = await fetch("/api/login", {
+    const res = await fetchJSON("/api/login", {
       method: "post",
-      body: JSON.stringify({ username, password }),
-      headers: {
-        "Content-Type": "application/json",
-      },
+      json: ({ username, password }),
     });
+
     if (!res.ok) {
       alert("Unauthorized");
     }

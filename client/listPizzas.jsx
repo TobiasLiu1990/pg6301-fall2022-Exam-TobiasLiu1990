@@ -3,12 +3,10 @@ import { useLoader } from "./lib/useLoader";
 import { useNavigate } from "react-router-dom";
 
 export function PizzaCard({
-  pizza: { pizza, price, ingredients, allergens },
-  handleClick,
+  pizza: { pizza, price, ingredients, allergens }
 }) {
   return (
     <div>
-      <button onClick={handleClick}>Order</button>
       <h3 style={{ margin: "0", border: "0" }}>Pizza: {pizza}</h3>
       <h4 style={{ margin: "0", border: "0" }}>Price: {price}</h4>
       <h4>
@@ -47,7 +45,6 @@ export function ListPizzas({ pizzaApi }) {
   const { loading, error, data } = useLoader(async () => {
     return await pizzaApi.listPizzas();
   });
-  const [order, setOrder] = useState(0);
   const navigate = useNavigate();
 
   if (loading) {
@@ -63,13 +60,6 @@ export function ListPizzas({ pizzaApi }) {
         An error has occurred in ShowMenu(): {error.toString()}
       </div>
     );
-  }
-
-  async function handleClick(e) {
-    e.preventDefault();
-    setOrder(e.target.value++);
-
-    console.log("Dish added" + order);
   }
 
   function handleSubmitBack(e) {
@@ -92,7 +82,6 @@ export function ListPizzas({ pizzaApi }) {
           <PizzaCard
             key={pizza.pizza}
             pizza={pizza}
-            handleClick={handleClick}
           />
         ))}
       </div>

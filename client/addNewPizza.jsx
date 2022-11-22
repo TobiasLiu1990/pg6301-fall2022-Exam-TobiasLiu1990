@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {FormInput} from "./lib/formInput";
+import {fetchJSON} from "./lib/fetchJson";
 
 export function AddNewPizza() {
   const [pizza, setPizza] = useState("");
@@ -17,13 +18,11 @@ export function AddNewPizza() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    navigate("/");
 
-    await fetch("/api/menu/new", {
+    await fetchJSON("/api/menu/new", {
       method: "post",
-      body: JSON.stringify({ pizza, price, ingredients, allergens }),
-      headers: {
-        "Content-Type": "application/json",
-      },
+      json: ({pizza, price, ingredients, allergens}),
     });
   }
 

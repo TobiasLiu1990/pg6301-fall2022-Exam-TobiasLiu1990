@@ -49,7 +49,7 @@ export function RegisterNewAccount() {
           value={password}
           onChangeValue={setPassword}
         />
-        <button>Log in</button>
+        <button>Create user</button>
       </form>
     </div>
   );

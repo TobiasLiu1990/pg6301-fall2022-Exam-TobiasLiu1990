@@ -68,4 +68,33 @@ describe("register new account component", () => {
       password: "simulated password",
     });
   });
+
+  it("should go back on back button", async () => {
+    const backOnClick = jest.fn();
+    const element = document.createElement("div");
+
+
+    // await act(async () =>
+    //     ReactDOM.render(
+    //         <MemoryRouter>
+    //           <RegisterNewAccount handleClick={backOnClick} />
+    //         </MemoryRouter>,
+    //         element
+    //     )
+    // );
+    //
+    // Simulate.click(element.querySelector("button:nth-of-type(1)"))
+    //
+    // expect(backOnClick).toBeCalled();
+
+
+
+    // const backOnClick = jest.fn();
+    // const element = document.createElement("div");
+    // const mockButton = ReactDOM.render((<button onClick={backOnClick}>Go Back</button>), element)
+    // Simulate.click(element.querySelector("button"))
+    // expect(backOnClick.mock.calls.length).toEqual(1)
+
+
+  })
 });

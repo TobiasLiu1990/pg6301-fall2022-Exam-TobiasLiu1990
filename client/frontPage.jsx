@@ -3,6 +3,7 @@ import { useLoader } from "./lib/useLoader";
 import { fetchJSON } from "./lib/fetchJson";
 import { ShowMenu } from "./cateringApplication";
 import { LoginLinks, LogoutButton } from "./userStatus";
+import {ListPizzas} from "./listPizzas";
 
 /*
   Frontpage now shows different depending on if user is logged in.
@@ -39,6 +40,7 @@ export function FrontPage() {
       ) : (
         <LoginLinks />
       )}
+
     </div>
   );
 }

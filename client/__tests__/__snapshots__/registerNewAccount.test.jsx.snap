@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`register new account component should show register form 1`] = `"<div><form><button>Go back to start page</button></form><hr><h1>Register new user account</h1><form><div><label><strong>Username: </strong> <input value=""></label><br></div><div><label><strong>Full name: </strong> <input value=""></label><br></div><div><label><strong>Password: </strong> <input value=""></label><br></div><button>Log in</button></form></div>"`;
+exports[`register new account component should show register form 1`] = `"<div><form><button>Go back to start page</button></form><hr><h1>Register new user account</h1><form><div><label><strong>Username: </strong> <input value=""></label><br></div><div><label><strong>Full name: </strong> <input value=""></label><br></div><div><label><strong>Password: </strong> <input value=""></label><br></div><button>Create user</button></form></div>"`;

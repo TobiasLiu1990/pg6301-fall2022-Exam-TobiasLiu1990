@@ -8,11 +8,7 @@ import {Login} from "./login";
 import {RegisterNewAccount} from "./registerNewAccount";
 
 function Application() {
-  const loginApi = {
-    async loginUser() {
-      return await fetchJSON("/api/login");
-    },
-  };
+
   const registerApi = {
     async addUser() {
       return await fetchJSON("/api/login/new");
