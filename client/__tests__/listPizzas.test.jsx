@@ -77,8 +77,6 @@ describe("ListPizzas component", () => {
     const element = document.createElement("div");
     const ingredients = ["eggs", "cheese"];
     ReactDOM.render(<IngredientsCard ingredients={ingredients} />, element);
-
-    expect(element.innerHTML).toMatchSnapshot();
   });
 
   it("should show ingredients", () => {
@@ -98,8 +96,6 @@ describe("ListPizzas component", () => {
     const element = document.createElement("div");
     const allergens = ["casein", "nuts"];
     ReactDOM.render(<AllergensCard allergens={allergens} />, element);
-
-    expect(element.innerHTML).toMatchSnapshot();
   });
 
   it("should show allergens", () => {
