@@ -1,17 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-function FormInput({ label, value, onChangeValue }) {
-  return (
-    <div>
-      <label>
-        <strong>{label}</strong>{" "}
-        <input value={value} onChange={(e) => onChangeValue(e.target.value)} />
-      </label>
-      <br></br>
-    </div>
-  );
-}
+import {FormInput} from "./lib/formInput";
 
 export function AddNewPizza() {
   const [pizza, setPizza] = useState("");
