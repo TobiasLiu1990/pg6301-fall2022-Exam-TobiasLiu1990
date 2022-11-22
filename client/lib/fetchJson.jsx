@@ -19,7 +19,6 @@ export async function fetchJSON(url, options = {}) {
     throw new HttpError(res.status, res.statusText);
   }
   if (res.status === 200) {
-    //Changed from await res.json() to res.
-    return res;
+    return await res.json();
   }
 }

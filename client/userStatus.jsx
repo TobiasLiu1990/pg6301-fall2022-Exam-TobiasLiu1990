@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import {ListPizzas} from "./listPizzas";
 
 export function LoginLinks() {
   return (
@@ -26,18 +25,3 @@ export function LogoutButton(reloadPage) {
     </button>
   );
 }
-
-// export function UserStatus() {
-//   const loginApi = {
-//     async tryUser() {
-//       return await fetchJSON("/api/login");
-//     },
-//   };
-//
-//   return (
-//     <Routes>
-//       <Route path={"/"} element={<LoginLinks />} />
-//       <Route path={"/login"} element={<Login loginApi={loginApi} />}></Route>
-//     </Routes>
-//   );
-// }

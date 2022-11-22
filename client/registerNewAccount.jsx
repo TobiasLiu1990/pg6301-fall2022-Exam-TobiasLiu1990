@@ -14,11 +14,22 @@ export function RegisterNewAccount() {
     e.preventDefault();
     navigate("../");
 
-    await fetchJSON("/api/login/register", {
+    const res = await fetch("/api/login/register", {
       method: "post",
-      json: { username, password, fullName },
+      body: JSON.stringify({ username, password, fullName }),
+      headers: {
+        "Content-Type": "application/json",
+      }
     });
+
+
+    if (res.ok) {
+      console.log("user: " + await res.json())
+
+    }
+
   }
+
 
   function handleSubmitBack() {
     navigate("/");

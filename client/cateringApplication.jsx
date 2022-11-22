@@ -19,10 +19,6 @@ export function ShowMenu() {
   );
 }
 
-function Cart() {
-  return null;
-}
-
 export function CateringApplication() {
     const pizzaApi = {
         async listPizzas() {
