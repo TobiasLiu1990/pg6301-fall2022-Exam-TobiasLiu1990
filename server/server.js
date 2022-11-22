@@ -39,15 +39,15 @@ app.use(
 const users = [
   {
     role: "admin",
-    username: "admin",
-    password: "admin",
-    fullName: "Test Test",
+    username: "Thor Odinson",
+    password: "Thor",
+    fullName: "Strongest Avenger",
   },
   {
     role: "regular",
     username: "test",
     password: "test",
-    fullName: "Test tester"
+    fullName: "Test Testersen"
   }
 ];
 

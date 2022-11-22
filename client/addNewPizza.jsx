@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {FormInput} from "./lib/formInput";
-import {fetchJSON} from "./lib/fetchJson";
+import { FormInput } from "./lib/formInput";
 
 export function AddNewPizza() {
   const [pizza, setPizza] = useState("");
@@ -13,16 +12,19 @@ export function AddNewPizza() {
   let ingredients = [];
   let allergens = [];
 
-  ingredients = ingredient.split(" ");
-  allergens = allergen.split(" ");
+  ingredients = ingredient.split(",");
+  allergens = allergen.split(",");
 
   async function handleSubmit(e) {
     e.preventDefault();
     navigate("/");
 
-    await fetchJSON("/api/menu/new", {
+    await fetch("/api/menu/new", {
       method: "post",
-      json: ({pizza, price, ingredients, allergens}),
+      body: JSON.stringify({ pizza, price, ingredients, allergens }),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
   }
 
@@ -45,12 +47,12 @@ export function AddNewPizza() {
         <FormInput label={"Pizza: "} value={pizza} onChangeValue={setPizza} />
         <FormInput label={"Price: "} value={price} onChangeValue={setPrice} />
         <FormInput
-          label={"Ingredients (Separate by space): "}
+          label={"Ingredients (Separate by ,): "}
           value={ingredient}
           onChangeValue={setIngredient}
         />
         <FormInput
-          label={"Allergen (Separate with space): "}
+          label={"Allergen (Separate with ,): "}
           value={allergen}
           onChangeValue={setAllergen}
         />
@@ -86,12 +88,12 @@ export function AddNewPizzaForTest({ pizzaApi }) {
         <FormInput label={"Pizza: "} value={pizza} onChangeValue={setPizza} />
         <FormInput label={"Price: "} value={price} onChangeValue={setPrice} />
         <FormInput
-          label={"Ingredients (Separate by space): "}
+          label={"Ingredients (Separate by ,): "}
           value={ingredient}
           onChangeValue={setIngredient}
         />
         <FormInput
-          label={"Allergen (Separate with space): "}
+          label={"Allergen (Separate with ,): "}
           value={allergen}
           onChangeValue={setAllergen}
         />

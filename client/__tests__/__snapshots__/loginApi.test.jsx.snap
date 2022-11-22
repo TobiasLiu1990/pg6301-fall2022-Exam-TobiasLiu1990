@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`login component should show login form 1`] = `"<div><form><button>Go back to start page</button></form><hr><h1>Please login!</h1><form><div><label><strong>Username: </strong> <input value=""></label><br></div><div><label><strong>Password: </strong> <input value=""></label><br></div><button>Log in</button></form></div>"`;

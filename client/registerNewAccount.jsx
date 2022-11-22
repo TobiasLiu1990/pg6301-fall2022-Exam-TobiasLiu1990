@@ -1,10 +1,10 @@
 import * as React from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { fetchJSON } from "./lib/fetchJson";
+import {Form, useNavigate} from "react-router-dom";
 import { FormInput } from "./lib/formInput";
 
 export function RegisterNewAccount() {
+  const [role, setRole] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
@@ -14,20 +14,13 @@ export function RegisterNewAccount() {
     e.preventDefault();
     navigate("../");
 
-    const res = await fetch("/api/login/register", {
+    await fetch("/api/login/register", {
       method: "post",
       body: JSON.stringify({ username, password, fullName }),
       headers: {
         "Content-Type": "application/json",
       }
     });
-
-
-    if (res.ok) {
-      console.log("user: " + await res.json())
-
-    }
-
   }
 
 
@@ -45,6 +38,12 @@ export function RegisterNewAccount() {
 
       <h1>Register new user account</h1>
       <form onSubmit={handleSubmit}>
+        <FormInput
+          label={"Role: "}
+          value={role}
+          onChangeValue={setRole}
+        />
+
         <FormInput
           label={"Username: "}
           value={username}
@@ -55,11 +54,15 @@ export function RegisterNewAccount() {
           value={fullName}
           onChangeValue={setFullName}
         />
-        <FormInput
-          label={"Password: "}
-          value={password}
-          onChangeValue={setPassword}
-        />
+        <label>
+          <strong>Password: </strong>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
+
         <button>Create user</button>
       </form>
     </div>
@@ -67,6 +70,7 @@ export function RegisterNewAccount() {
 }
 
 export function RegisterNewAccountForTest({ registerApi }) {
+  const [role, setRole] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
@@ -77,7 +81,7 @@ export function RegisterNewAccountForTest({ registerApi }) {
     navigate("../");
   }
 
-  registerApi.addUser({ username, fullName, password }); //For test
+  registerApi.addUser({ role, username, fullName, password }); //For test
 
   function handleSubmitBack() {
     navigate("/");
@@ -93,6 +97,11 @@ export function RegisterNewAccountForTest({ registerApi }) {
 
       <h1>Register new user account</h1>
       <form onSubmit={handleSubmit}>
+        <FormInput
+            label={"Role: "}
+            value={role}
+            onChangeValue={setRole}
+        />
         <FormInput
           label={"Username: "}
           value={username}

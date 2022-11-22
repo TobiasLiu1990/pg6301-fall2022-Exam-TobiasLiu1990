@@ -46,11 +46,14 @@ export function Login() {
           value={username}
           onChangeValue={setUsername}
         />
-        <FormInput
-          label={"Password: "}
-          value={password}
-          onChangeValue={setPassword}
-        />
+        <label>
+          <strong>Password: </strong>
+          <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
         <button>Log in</button>
       </form>
     </div>

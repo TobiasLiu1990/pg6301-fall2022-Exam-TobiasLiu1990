@@ -26,8 +26,8 @@ describe("add pizza component", () => {
     expect(inputLabels).toEqual([
       "Pizza: ",
       "Price: ",
-      "Ingredients (Separate by space): ",
-      "Allergen (Separate with space): ",
+      "Ingredients (Separate by ,): ",
+      "Allergen (Separate with ,): ",
     ]);
   });
 

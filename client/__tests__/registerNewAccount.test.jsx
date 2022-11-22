@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { MemoryRouter } from "react-router-dom";
-import {RegisterNewAccount, RegisterNewAccountForTest} from "../registerNewAccount";
+
 import { act, Simulate } from "react-dom/test-utils";
+import {RegisterNewAccount, RegisterNewAccountForTest} from "../registerNewAccount";
 
 describe("register new account component", () => {
   it("should show register form", async () => {
@@ -23,7 +24,7 @@ describe("register new account component", () => {
       element.querySelectorAll("form label strong")
     ).map((label) => label.innerHTML);
 
-    expect(inputLabels).toEqual(["Username: ", "Full name: ", "Password: "]);
+    expect(inputLabels).toEqual(["Role: ", "Username: ", "Full name: ", "Password: "]);
   });
 
   it("should create new account", async () => {
@@ -40,21 +41,28 @@ describe("register new account component", () => {
     );
 
     Simulate.change(
-      element.querySelector("form:nth-of-type(2) div:nth-of-type(1) input"),
+        element.querySelector("form:nth-of-type(2) div:nth-of-type(1) input"),
+        {
+          target: { value: "admin" },
+        }
+    );
+
+    Simulate.change(
+      element.querySelector("form:nth-of-type(2) div:nth-of-type(2) input"),
       {
         target: { value: "simulated user" },
       }
     );
 
     Simulate.change(
-      element.querySelector("form:nth-of-type(2) div:nth-of-type(2) input"),
+      element.querySelector("form:nth-of-type(2) div:nth-of-type(3) input"),
       {
         target: { value: "simulated full name" },
       }
     );
 
     Simulate.change(
-      element.querySelector("form:nth-of-type(2) div:nth-of-type(3) input"),
+      element.querySelector("form:nth-of-type(2) div:nth-of-type(4) input"),
       {
         target: { value: "simulated password" },
       }
@@ -63,15 +71,16 @@ describe("register new account component", () => {
     Simulate.submit(element.querySelector("form"));
 
     expect(addUser).toBeCalledWith({
+      role: "admin",
       username: "simulated user",
       fullName: "simulated full name",
       password: "simulated password",
     });
   });
 
-  it("should go back on back button", async () => {
-    const backOnClick = jest.fn();
-    const element = document.createElement("div");
+  // it("should go back on back button", async () => {
+  //   const backOnClick = jest.fn();
+  //   const element = document.createElement("div");
 
 
     // await act(async () =>
@@ -96,5 +105,5 @@ describe("register new account component", () => {
     // expect(backOnClick.mock.calls.length).toEqual(1)
 
 
-  })
+  // })
 });

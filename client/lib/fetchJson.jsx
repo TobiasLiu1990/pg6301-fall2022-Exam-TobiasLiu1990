@@ -9,7 +9,6 @@ export class HttpError extends Error {
 //Reusable fetch
 export async function fetchJSON(url, options = {}) {
   const res = await fetch(url, {
-    //Check options method. Otherwise default is a get
     method: options.method || "get",
     body: options.json && JSON.stringify(options.json),
     headers: options.json ? { "Content-Type": "application/json" } : {},

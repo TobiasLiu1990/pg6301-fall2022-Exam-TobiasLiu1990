@@ -1,16 +1,31 @@
+[![.github/workflows/verify.yaml](https://github.com/TobiasLiu1990/pg6301-fall2022-Exam-TobiasLiu1990/actions/workflows/verify.yaml/badge.svg)](https://github.com/TobiasLiu1990/pg6301-fall2022-Exam-TobiasLiu1990/actions/workflows/verify.yaml)
 #### Catering business
+  - Odd pizzas you won't find anywhere else!
 
-* I tried to use the generated GitHub Classroom repo that was generated from the exam text ( https://classroom.github.com/a/qa5zyqOy ).
-* But it did not work. After trying multiple times to connect to it either by creating from GitHub repos or adding it from a new project, it did not work.
-* It kept telling me that the repo does not exist. So i made my own repo for this exam.
-* I have also chosen to run React 17 for this project.
+
+I could not get the GitHub classroom repo to work when I tried to connect to it. It kept asking for authentication but even after successfully doing so, it gave me an error
+saying that the repo did not exist.
+So I created my own repo and used it for the exam.
+I also chose to run React 17, as it felt easier for me regarding jest. Also, to ignore the React 18 messages.
 
 * Link: https://github.com/TobiasLiu1990/pg6301-fall2022-Exam-TobiasLiu1990
 
 
-To start:
-* From root: npm install. Should install node_modules for everything: root, client, server folders.
-* From root: npm run dev - to start client and server.
+* To start:
+  - Package.json in root should have most scripts that is needed to avoid navigating to /client or /server.
+  - The postinstall script seem to sometimes give errors on install. In that case it has to be temporarily removed (to install all 3 package.jsons separately).
+    But it is needed for GitHub actions to run properly.
+  - Prettier is also installed to format code. I decided not to include Husky as I had turned on to auto-format with prettier in Webstorm settings.
+  
+  
+* Structure:
+* Root
+  * client
+    * lib (diverse functions that are used) 
+    * __tests__
+  * server
+    * __tests__
+
 
 * Catering app, odd pizzas.
   * On startup, you have to login or register a new account. Then you can view the menu.
@@ -20,7 +35,8 @@ To start:
     * Regular users cant access add dish page. They will see it being restricted. Going to /menu/new will also show nothing.
     
   * I did not manage to get information from database when it comes to the users (for logging in)
-    * But it is possible to post to MongoDB successfully.
+    * But it is possible to create a new user and post to MongoDB successfully.
+      * Currently, one downside is that anyone can do this, which means anyone can assign the role of "admin" or "regular"
     * So unfortunately I had to hardcode an admin user and a regular user in server.js.
     
   * Posting new dishes from admin user (account with role: "admin") to MongoDB works. It will appear on the menu.
@@ -30,13 +46,8 @@ To start:
   * Unfortunately for the tests, I did not get them all of them to work as I wanted. To prevent some error messages I couldn't
     figure out, I had to make an exact copy of the component (which i renamed to ...ForTest) to pass and fun a mock function on.
 
-  * GitHub Actions runs and shows a coverage report.
-
-
-* I have managed to get the POST to work correctly for adding a dish and a user to the database.
-* But for users, i havent successfully gotten the information from database to use in the app.
-
-
-Frontend files are located in /client.
-Backend files are located in /server
-
+  * GitHub Actions runs and shows a coverage report. ( https://github.com/ArtiomTr/jest-coverage-report-action )
+    * After successful run they'll appear under Commits.
+  * For the server tests. I couldn't figure out how to configure it so GitHub Actions would use system environment variables to login.
+    So I had to put the url+password in the actual MongoClient (Bad security but at least it's only a test cluster with no important data).
+  * I also white-listed all IPs for the cluster in case it would block for checking that everything works later.
