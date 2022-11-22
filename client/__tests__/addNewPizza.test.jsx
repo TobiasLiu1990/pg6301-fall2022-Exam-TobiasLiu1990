@@ -1,12 +1,17 @@
 import ReactDOM from "react-dom";
 import React from "react";
 import { act, Simulate } from "react-dom/test-utils";
-import {AddNewPizza, AddNewPizzaForTest} from "../addNewPizza";
+import { AddNewPizza, AddNewPizzaForTest } from "../addNewPizza";
+import { MemoryRouter } from "react-router-dom";
 
 describe("add pizza component", () => {
   it("should show pizza form", async () => {
     const element = document.createElement("div");
-    await act(async () => ReactDOM.render(<AddNewPizza />, element));
+    await act(async () => ReactDOM.render(
+      <MemoryRouter>
+        <AddNewPizza />
+      </MemoryRouter>,
+      element));
 
     expect(element.innerHTML).toMatchSnapshot();
 
@@ -18,7 +23,7 @@ describe("add pizza component", () => {
       "Pizza: ",
       "Price: ",
       "Ingredients (Separate by space): ",
-      "Allergen (Separate with space): ",
+      "Allergen (Separate with space): "
     ]);
   });
 
@@ -33,16 +38,16 @@ describe("add pizza component", () => {
 
     //Send the title declared above to onChange. Select the first form input, which is title.
     Simulate.change(element.querySelector("form div:nth-of-type(1) input"), {
-        target: {value: "Tasty pizza"},
+      target: { value: "Tasty pizza" }
     });
     Simulate.change(element.querySelector("form div:nth-of-type(2) input"), {
-      target: {value: 500},
+      target: { value: 500 }
     });
     Simulate.change(element.querySelector("form div:nth-of-type(3) input"), {
-      target: {value: "cheese eggs"},
+      target: { value: "cheese eggs" }
     });
     Simulate.change(element.querySelector("form div:nth-of-type(4) input"), {
-      target: {value: "eggs casein"},
+      target: { value: "eggs casein" }
     });
 
     Simulate.submit(element.querySelector("form"));

@@ -2,27 +2,33 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { act } from "react-dom/test-utils";
 import { ListPizzas } from "../listPizzas";
+import { MemoryRouter } from "react-router-dom";
 
 const pizzas = [
   {
     pizza: "pizza 1",
     price: 100,
     ingredients: ["tomato", "cheese"],
-    allergens: ["casein"],
+    allergens: ["casein"]
   },
   {
     pizza: "pizza 2",
     price: 500,
     ingredients: ["tomato", "cheese", "peanuts"],
-    allergens: ["casein", "nuts"],
-  },
+    allergens: ["casein", "nuts"]
+  }
 ];
 
 //Test useLoader
 describe("ListPizzas component", () => {
   it("should show loading screen", () => {
     const element = document.createElement("div");
-    ReactDOM.render(<ListPizzas />, element);
+    ReactDOM.render(
+      <MemoryRouter>
+        <ListPizzas />
+      </MemoryRouter>,
+      element
+    );
 
     expect(element.innerHTML).toMatchSnapshot();
   });
@@ -32,11 +38,9 @@ describe("ListPizzas component", () => {
 
     await act(async () => {
       ReactDOM.render(
-        <ListPizzas
-          pizzaApi={{
-            listPizzas: () => new Promise((resolve) => resolve(pizzas)),
-          }}
-        />,
+        <MemoryRouter>
+          <ListPizzas pizzaApi={{ listPizzas: () => new Promise((resolve) => resolve(pizzas)) }} />
+        </MemoryRouter>,
         element
       );
     });
@@ -46,9 +50,9 @@ describe("ListPizzas component", () => {
     );
 
     expect(element.querySelector("h4").innerHTML).toEqual(
-        "Price: " + pizzas[0].price,
-        "Ingredients:" + pizzas[0].ingredients,
-        "Allergens: " + pizzas[0].allergens
+      "Price: " + pizzas[0].price,
+      "Ingredients:" + pizzas[0].ingredients,
+      "Allergens: " + pizzas[0].allergens
     );
 
     expect(
@@ -63,14 +67,13 @@ describe("ListPizzas component", () => {
 
     await act(async () => {
       ReactDOM.render(
-        <ListPizzas
-          pizzaApi={{
-            listPizzas: () =>
-              new Promise((resolve, reject) => {
-                reject(new Error("Failed to fetch"));
-              }),
+        <MemoryRouter>
+          <ListPizzas pizzaApi={{
+            listPizzas: () => new Promise((resolve, reject) => {
+              reject(new Error("Failed to fetch"));
+            })
           }}
-        />,
+          /></MemoryRouter>,
         element
       );
     });

@@ -39,14 +39,14 @@ describe("login component", () => {
     );
 
     Simulate.change(element.querySelector("form:nth-of-type(2) div:nth-of-type(2) input"), {
-      target: { value: "admin" },
+      target: { value: "password" },
     });
 
     Simulate.submit(element.querySelector("form"));
 
     expect(fakeLogin).toBeCalledWith({
       username: "admin",
-      password: "admin",
+      password: "password",
     });
   });
 });
