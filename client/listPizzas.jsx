@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useLoader } from "./useLoader";
+import { useNavigate } from "react-router-dom";
 
 export function PizzaCard({
   pizza: { pizza, price, ingredients, allergens },
@@ -44,10 +45,10 @@ export function AllergensCard({ allergens }) {
 
 export function ListPizzas({ pizzaApi }) {
   const { loading, error, data } = useLoader(async () => {
-      return await pizzaApi.listPizzas();
-
+    return await pizzaApi.listPizzas();
   });
   const [order, setOrder] = useState(0);
+  const navigate = useNavigate();
 
   if (loading) {
     return <div>Loading menu...</div>;
@@ -55,7 +56,10 @@ export function ListPizzas({ pizzaApi }) {
 
   if (error) {
     return (
-      <div id="error-list-pizzas-div" style={{ border: "solid red 1px", background: "red" }}>
+      <div
+        id="error-list-pizzas-div"
+        style={{ border: "solid red 1px", background: "red" }}
+      >
         An error has occurred in ShowMenu(): {error.toString()}
       </div>
     );
@@ -68,8 +72,19 @@ export function ListPizzas({ pizzaApi }) {
     console.log("Dish added" + order);
   }
 
+  function handleSubmitBack(e) {
+    e.preventDefault();
+    navigate("/");
+  }
+
   return (
     <div>
+      <form onSubmit={handleSubmitBack}>
+        <button>Go back to start page</button>
+      </form>
+
+      <hr></hr>
+
       <h1>Our attractive menu</h1>
 
       <div>

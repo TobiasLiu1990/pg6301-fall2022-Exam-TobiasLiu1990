@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
-import {fetchJSON, HttpError} from "./fetchJson";
+import { fetchJSON, HttpError } from "./fetchJson";
 
 export function LoginLinks() {
   return (
@@ -29,34 +29,47 @@ export function Login() {
       },
     });
     if (!res.ok) {
-        alert("Unauthorized")
+      alert("Unauthorized");
     }
     if (res.ok) {
       navigate("/");
     }
   }
 
+  function handleSubmitBack(e) {
+    e.preventDefault();
+    navigate("/")
+  }
+
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>Please login!</h1>
-      <div>
-        Username:{" "}
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </div>
-      <div>
-        Password:{" "}
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-      <button>Log in</button>
-    </form>
+    <div>
+      <form onSubmit={handleSubmitBack}>
+        <button>Go back to start page</button>
+      </form>
+
+      <hr></hr>
+
+      <form onSubmit={handleSubmit}>
+        <h1>Please login!</h1>
+        <div>
+          Username:{" "}
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div>
+          Password:{" "}
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <button>Log in</button>
+      </form>
+    </div>
   );
 }
 
@@ -76,35 +89,47 @@ export function RegisterNewAccount() {
     });
   }
 
+  function handleSubmitBack() {
+    navigate("/");
+  }
+
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>Register new user account</h1>
-      <div>
-        Username:{" "}
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </div>
-      <div>
-        Full name:{" "}
-        <input
-          type="text"
-          value={fullName}
-          onChange={(e) => setFullName(e.target.value)}
-        />
-      </div>
-      <div>
-        Password:{" "}
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-      <button>Log in</button>
-    </form>
+    <div>
+      <form onSubmit={handleSubmitBack}>
+        <button>Go back to start page</button>
+      </form>
+
+      <hr></hr>
+
+      <form onSubmit={handleSubmit}>
+        <h1>Register new user account</h1>
+        <div>
+          Username:{" "}
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div>
+          Full name:{" "}
+          <input
+            type="text"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+          />
+        </div>
+        <div>
+          Password:{" "}
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <button>Log in</button>
+      </form>
+    </div>
   );
 }
 
