@@ -3,7 +3,10 @@ import ReactDOM from "react-dom";
 import { MemoryRouter } from "react-router-dom";
 
 import { act, Simulate } from "react-dom/test-utils";
-import {RegisterNewAccount, RegisterNewAccountForTest} from "../registerNewAccount";
+import {
+  RegisterNewAccount,
+  RegisterNewAccountForTest,
+} from "../registerNewAccount";
 
 describe("register new account component", () => {
   it("should show register form", async () => {
@@ -24,7 +27,12 @@ describe("register new account component", () => {
       element.querySelectorAll("form label strong")
     ).map((label) => label.innerHTML);
 
-    expect(inputLabels).toEqual(["Role: ", "Username: ", "Full name: ", "Password: "]);
+    expect(inputLabels).toEqual([
+      "Role: ",
+      "Username: ",
+      "Full name: ",
+      "Password: ",
+    ]);
   });
 
   it("should create new account", async () => {
@@ -34,17 +42,17 @@ describe("register new account component", () => {
     await act(async () =>
       ReactDOM.render(
         <MemoryRouter>
-          <RegisterNewAccountForTest registerApi={{addUser}} />
+          <RegisterNewAccountForTest registerApi={{ addUser }} />
         </MemoryRouter>,
         element
       )
     );
 
     Simulate.change(
-        element.querySelector("form:nth-of-type(2) div:nth-of-type(1) input"),
-        {
-          target: { value: "admin" },
-        }
+      element.querySelector("form:nth-of-type(2) div:nth-of-type(1) input"),
+      {
+        target: { value: "admin" },
+      }
     );
 
     Simulate.change(
@@ -77,33 +85,4 @@ describe("register new account component", () => {
       password: "simulated password",
     });
   });
-
-  // it("should go back on back button", async () => {
-  //   const backOnClick = jest.fn();
-  //   const element = document.createElement("div");
-
-
-    // await act(async () =>
-    //     ReactDOM.render(
-    //         <MemoryRouter>
-    //           <RegisterNewAccount handleClick={backOnClick} />
-    //         </MemoryRouter>,
-    //         element
-    //     )
-    // );
-    //
-    // Simulate.click(element.querySelector("button:nth-of-type(1)"))
-    //
-    // expect(backOnClick).toBeCalled();
-
-
-
-    // const backOnClick = jest.fn();
-    // const element = document.createElement("div");
-    // const mockButton = ReactDOM.render((<button onClick={backOnClick}>Go Back</button>), element)
-    // Simulate.click(element.querySelector("button"))
-    // expect(backOnClick.mock.calls.length).toEqual(1)
-
-
-  // })
 });

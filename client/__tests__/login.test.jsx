@@ -2,7 +2,17 @@ import ReactDOM from "react-dom";
 import React from "react";
 import { act, Simulate } from "react-dom/test-utils";
 import { MemoryRouter } from "react-router-dom";
-import {Login, LoginForTest} from "../login";
+import { Login, LoginForTest } from "../login";
+import { queryAllByAltText } from "@testing-library/react";
+
+const user = [
+  {
+    role: "admin",
+    username: "administrator",
+    fullName: "mr. admin",
+    password: "secret",
+  },
+];
 
 describe("login component", () => {
   it("should show login form", async () => {
@@ -18,7 +28,7 @@ describe("login component", () => {
     expect(element.innerHTML).toMatchSnapshot();
   });
 
-  it("should try to login", async () => {
+  it("should simulate login form", async () => {
     const fakeLogin = jest.fn();
     const element = document.createElement("div");
 
@@ -38,9 +48,12 @@ describe("login component", () => {
       }
     );
 
-    Simulate.change(element.querySelector("form:nth-of-type(2) div:nth-of-type(2) input"), {
-      target: { value: "password" },
-    });
+    Simulate.change(
+      element.querySelector("form:nth-of-type(2) div:nth-of-type(2) input"),
+      {
+        target: { value: "password" },
+      }
+    );
 
     Simulate.submit(element.querySelector("form"));
 

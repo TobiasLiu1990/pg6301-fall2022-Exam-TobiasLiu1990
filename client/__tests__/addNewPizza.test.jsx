@@ -3,7 +3,6 @@ import React from "react";
 import { act, Simulate } from "react-dom/test-utils";
 import { AddNewPizza, AddNewPizzaForTest } from "../addNewPizza";
 import { MemoryRouter } from "react-router-dom";
-import { screen, render, fireEvent } from "@testing-library/react";
 
 describe("add pizza component", () => {
   it("should show pizza form", async () => {
@@ -63,26 +62,4 @@ describe("add pizza component", () => {
       allergens: ["eggs", "casein"],
     });
   });
-
-  // it("should navigate back", async () => {
-  //   //Mock useNavigate
-  //   const mockNavigate = jest.fn();
-  //
-  //   jest.mock("react-router-dom", () => ({
-  //     ...jest.requireActual("react-router-dom"),
-  //     useNavigate: () => mockNavigate,
-  //   }));
-  //
-  //   const { container } = render(
-  //     <MemoryRouter>
-  //       <AddNewPizza />
-  //     </MemoryRouter>
-  //   );
-  //
-  //   const innerTextElement = screen.getByText("Go Back to start-page");
-  //
-  //   fireEvent.click(innerTextElement);
-  //
-  //   await expect(mockNavigate).toBeCalledTimes(1);
-  // });
 });

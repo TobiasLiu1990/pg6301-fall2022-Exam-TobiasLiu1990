@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import { useLoader } from "./lib/useLoader";
 import { useNavigate } from "react-router-dom";
 
-export function PizzaCard({
-  pizza: { pizza, price, ingredients, allergens }
-}) {
+export function PizzaCard({ pizza: { pizza, price, ingredients, allergens } }) {
   return (
     <div>
       <h3 style={{ margin: "0", border: "0" }}>Pizza: {pizza}</h3>
@@ -13,9 +11,7 @@ export function PizzaCard({
         Ingredients: <IngredientsCard ingredients={ingredients} />
       </h4>
       <h4>
-        <div>
-          Allergens: <AllergensCard allergens={allergens} />
-        </div>
+        Allergens: <AllergensCard allergens={allergens} />
       </h4>
     </div>
   );
@@ -79,10 +75,7 @@ export function ListPizzas({ pizzaApi }) {
 
       <div>
         {data.map((pizza) => (
-          <PizzaCard
-            key={pizza.pizza}
-            pizza={pizza}
-          />
+          <PizzaCard key={pizza.pizza} pizza={pizza} />
         ))}
       </div>
     </div>
