@@ -69,8 +69,6 @@ describe("ListPizzas component", () => {
     expect(
       Array.from(element.querySelectorAll("h3")).map((e) => e.innerHTML)
     ).toEqual(["Pizza: pizza 1", "Pizza: pizza 2"]);
-
-    expect(element.innerHTML).toMatchSnapshot();
   });
 
   it("should show ingredients form", () => {
