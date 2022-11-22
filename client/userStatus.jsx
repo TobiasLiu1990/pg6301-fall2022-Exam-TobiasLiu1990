@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
-import { fetchJSON } from "./fetchJson";
+import {fetchJSON, HttpError} from "./fetchJson";
 
 export function LoginLinks() {
   return (
@@ -25,9 +25,12 @@ export function Login() {
       method: "post",
       body: JSON.stringify({ username, password }),
       headers: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
       },
     });
+    if (!res.ok) {
+        alert("Unauthorized")
+    }
     if (res.ok) {
       navigate("/");
     }

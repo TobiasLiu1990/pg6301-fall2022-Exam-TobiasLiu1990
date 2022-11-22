@@ -1,4 +1,3 @@
-import { fetchJSON } from "./fetchJson";
 import React, { useState } from "react";
 
 function FormInput({ label, value, onChangeValue }) {
@@ -28,9 +27,12 @@ export function AddNewPizza() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    await fetchJSON("/api/menu/new", {
+    await fetch("/api/menu/new", {
       method: "post",
-      json: { pizza, price, ingredients, allergens },
+      body: JSON.stringify({ pizza, price, ingredients, allergens }),
+      headers: {
+        "Content-Type": "application/json",
+      }
     });
   }
 

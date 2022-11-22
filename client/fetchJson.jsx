@@ -11,7 +11,7 @@ export async function fetchJSON(url, options = {}) {
   const res = await fetch(url, {
     //Check options method. Otherwise default is a get
     method: options.method || "get",
-    headers: options.json ? { "content-type": "application/json" } : {},
+    headers: options.json ? { "Content-Type": "application/json" } : {},
     body: options.json && JSON.stringify(options.json),
   });
 
