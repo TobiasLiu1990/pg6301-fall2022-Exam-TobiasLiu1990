@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`ListPizzas component should show loading screen 1`] = `"<div>Loading menu...</div>"`;

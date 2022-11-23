@@ -29,8 +29,6 @@ describe("ListPizzas component", () => {
             </MemoryRouter>,
             element
         );
-
-        // expect(element.innerHTML).toMatchSnapshot();
     });
 
     it("should show pizzas", async () => {
